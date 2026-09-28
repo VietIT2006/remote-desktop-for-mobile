@@ -1,0 +1,13 @@
+{
+  "name": "remote-desktop-workspace",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "concurrently \"npm run start-server\" \"npm run start-app\"",
+    "start-server": "cd desktop-server && npm start",
+    "start-app": "cd iphone/remote-mobile-app && npx expo start -c"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

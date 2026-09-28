@@ -59,7 +59,17 @@ async function startServer() {
   console.log(`\n🔑 MÃ PIN CỦA BẠN LÀ:  [ ${pinCode} ] \n`);
   console.log('Hãy mở app trên iPhone, nhập mã 6 số này vào để bắt đầu điều khiển.');
   console.log('=====================================\n');
+
+  // Gửi thông báo Popup trên Windows để không bị Expo xóa mất chữ
+  const notifier = require('node-notifier');
+  notifier.notify({
+    title: 'Mã PIN Remote Desktop',
+    message: `Mã PIN kết nối của bạn là: ${pinCode}`,
+    sound: true,
+    wait: true
+  });
   
+  // Khởi động WebSocket Server để stream hình ảnh và nhận lệnh chuột
   startStreamingServer();
 }
 
